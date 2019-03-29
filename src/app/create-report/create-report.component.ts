@@ -59,6 +59,7 @@ export class CreateReportComponent implements OnInit {
       ]
     }
   ];
+  
   constructor() { }
 
   ngOnInit() {
