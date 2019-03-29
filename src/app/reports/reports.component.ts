@@ -7,6 +7,16 @@ export interface PeriodicElement {
   symbol: string;
 }
 
+export interface ReportHeader {
+  name: String;
+  age: number;
+  gender: string;
+  date: Date;
+}
+
+const HEADING_DATA: ReportHeader[] = [
+  {name: "Noman", age: 22, date: new Date(), gender: "Male"}
+]
 const ELEMENT_DATA: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
