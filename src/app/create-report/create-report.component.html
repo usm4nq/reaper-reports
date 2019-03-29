@@ -1,4 +1,4 @@
-<div *ngFor="let component of report">
+<div *ngFor="let component of report.template">
   <ng-container *ngIf="component.cType === 'table'; then thenTemplate;"></ng-container>
   <ng-template #thenTemplate>
     <table>

@@ -1,23 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-
-class table {
+abstract class ReaperComponent {
+  
+}
+class ReaperTable extends ReaperComponent {
   cType: String;
   rows: any[];
   constructor(rows: any[]) {
+    super();
     this.cType = "table";
     this.rows = rows
   }
 }
 
-class row {
-  data: any[];
+class ReaperTableRow extends ReaperComponent {
+  data: ReaperComponent[];
 
-  constructor(data: any[]) {
+  constructor(data: ReaperComponent[]) {
+    super();
     this.data = data;
   }
 }
 
-class label {
+class ReaperLabel {
   cType:String;
   text:any;
   constructor(text:any){
@@ -33,47 +37,49 @@ class label {
 })
 export class CreateReportComponent implements OnInit {
 
-  report: any = [
-    new table([
-      new row(
+  report: any = {
+
+    template: [
+    new ReaperTable([
+      new ReaperTableRow(
         [
-          new label("Name :"),
-          new label("Noman")
+          new ReaperLabel("Name :"),
+          new ReaperLabel("Noman")
         ]
       ),
-      new row(
+      new ReaperTableRow(
         [
-          new label("Age :"),
-          new label(13)
+          new ReaperLabel("Age :"),
+          new ReaperLabel(13)
         ]
       )
     ]),
-    new table(
+    new ReaperTable(
       [
-        new row(
+        new ReaperTableRow(
           [
-            new label(""),
-            new label("Paper"),
-            new label("Marks")
+            new ReaperLabel(""),
+            new ReaperLabel("Paper"),
+            new ReaperLabel("Marks")
           ]
         ),
-        new row(
+        new ReaperTableRow(
           [
-            new label(1),
-            new label("Maths"),
-            new label(100)
+            new ReaperLabel(1),
+            new ReaperLabel("Maths"),
+            new ReaperLabel(100)
           ]
         ),
-        new row(
+        new ReaperTableRow(
           [
-            new label(2),
-            new label("Physics"),
-            new label(97)
+            new ReaperLabel(2),
+            new ReaperLabel("Physics"),
+            new ReaperLabel(97)
           ]
         )
       ]
     )
-  ];
+  ]};
 
   constructor() { }
 
