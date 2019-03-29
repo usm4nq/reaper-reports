@@ -6,19 +6,20 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { ReportsComponent } from './reports/reports.component';
-import { MatInputModule, MatTableModule, MatCardModule, MatGridListModule, MatButtonModule, MatSelectModule, MatFormFieldModule, MatDividerModule } from '@angular/material';
+import { MatInputModule, MatTableModule, MatCardModule, MatGridListModule, MatButtonModule, MatSelectModule, MatFormFieldModule, MatDividerModule, MatListModule } from '@angular/material';
+import { FormsModule } from '@angular/forms';
 import { CreateReportComponent } from './create-report/create-report.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'Reports', component: ReportsComponent },
-  { path: 'create-new-report', component: CreateReportComponent },
+  { path: 'Create-New-Report', component: CreateReportComponent},
   {
     path: '',
-    redirectTo: '/create-new-report',
+    redirectTo: '/Create-New-Report',
     pathMatch: 'full'
   },
-  { path: '**', component: CreateReportComponent }//page not found
+  { path: '**', component: HomeComponent }//page not found
 ]
 
 @NgModule({
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
     ),
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatInputModule,
     MatTableModule,
     MatCardModule,
@@ -43,6 +45,7 @@ const appRoutes: Routes = [
     MatSelectModule,
     MatFormFieldModule,
     MatDividerModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

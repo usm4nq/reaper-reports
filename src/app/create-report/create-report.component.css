@@ -1,9 +1,0 @@
-.container div{
-    width: 33%;
-    margin: 1px;
-    float: left;
-}
-
-.container div *{
-    margin: 12px;
-}
