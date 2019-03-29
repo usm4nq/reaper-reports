@@ -1,5 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 
+class table {
+  cType: String;
+  rows: any[];
+  constructor(rows: any[]) {
+    this.cType = "table";
+    this.rows = rows
+  }
+}
+
+class row {
+  data: any[];
+
+  constructor(data: any[]) {
+    this.data = data;
+  }
+}
+
+class label {
+  cType:String;
+  text:any;
+  constructor(text:any){
+    this.cType = "label";
+    this.text = text;
+  }
+}
+
 @Component({
   selector: 'app-create-report',
   templateUrl: './create-report.component.html',
@@ -8,58 +34,47 @@ import { Component, OnInit } from '@angular/core';
 export class CreateReportComponent implements OnInit {
 
   report: any = [
-    {
-      cType: "table",
-      rows:
+    new table([
+      new row(
         [
-          {
-            data:
-              [
-                { cType: "label", text: "Name :" },
-                { cType: "label", text: "Noman" }
-              ]
-          },
-          {
-            data:
-              [
-                { cType: "label", text: "Age :"},
-                { cType: "label", text: 23}
-              ]
-          }
+          new label("Name :"),
+          new label("Noman")
         ]
-    },
-    {
-      cType: "table",
-      rows:
+      ),
+      new row(
+        [
+          new label("Age :"),
+          new label(13)
+        ]
+      )
+    ]),
+    new table(
       [
-        {
-          data:
+        new row(
           [
-            {cType: "label", text: ""},
-            {cType: "label", text: "Paper"},
-            {cType: "label", text: "Marks"}
+            new label(""),
+            new label("Paper"),
+            new label("Marks")
           ]
-        },
-        {
-          data:
+        ),
+        new row(
           [
-            {cType: "label", text: 1},
-            {cType: "label", text: "Maths"},
-            {cType: "label", text: 100}
+            new label(1),
+            new label("Maths"),
+            new label(100)
           ]
-        },
-        {
-          data:
+        ),
+        new row(
           [
-            {cType: "label", text: 2},
-            {cType: "label", text: "Physics"},
-            {cType: "label", text: 97}
+            new label(2),
+            new label("Physics"),
+            new label(97)
           ]
-        }
+        )
       ]
-    }
+    )
   ];
-  
+
   constructor() { }
 
   ngOnInit() {
