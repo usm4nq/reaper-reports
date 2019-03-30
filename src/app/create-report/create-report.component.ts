@@ -1,36 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-abstract class ReaperComponent {
-  
-}
-class ReaperSection extends ReaperComponent { 
-  name: String;
-  cType: String;
-  rows: any[];
-  constructor(rows: any[], name: String) {
-    super();
-    this.name = name;
-    this.cType = "table";
-    this.rows = rows
-  }
-}
-
-class ReaperRow extends ReaperComponent {
-  data: ReaperComponent[];
-
-  constructor(data: ReaperComponent[]) {
-    super();
-    this.data = data;
-  }
-}
-
-class ReaperLabel {
-  cType:String;
-  text:any;
-  constructor(text:any){
-    this.cType = "label";
-    this.text = text;
-  }
-}
+import { ReaperSection, ReaperRow, ReaperLabel, IReport, ReaperDivider } from '../../Reaper/core';
 
 @Component({
   selector: 'app-create-report',
@@ -39,10 +8,8 @@ class ReaperLabel {
 })
 export class CreateReportComponent implements OnInit {
 
-  reports: String[] = ["aaa","bbb","ccc"];
-
-  report: any = {
-
+  report: IReport = {
+    name: "Name of Report",
     template: [
     new ReaperSection([
       new ReaperRow(
@@ -51,6 +18,7 @@ export class CreateReportComponent implements OnInit {
           new ReaperLabel("Noman")
         ]
       ),
+      new ReaperDivider(),
       new ReaperRow(
         [
           new ReaperLabel("Age :"),
@@ -58,6 +26,7 @@ export class CreateReportComponent implements OnInit {
         ]
       )
     ], "Header"),
+    new ReaperDivider(),
     new ReaperSection(
       [
         new ReaperRow(
@@ -100,6 +69,7 @@ export class CreateReportComponent implements OnInit {
             new ReaperLabel("Noman")
           ]
         ),
+        new ReaperDivider(),
         new ReaperRow(
           [
             new ReaperLabel("Age :"),

@@ -1,18 +1,53 @@
-<div>
-  <mat-list>
-    <mat-list-item *ngFor="let section of report.template">{{section.name}}</mat-list-item>
-  </mat-list>
-</div>
+<h1>{{report.name}}</h1>
 
-<div *ngFor="let component of report.template">
-  <ng-container *ngIf="component.cType === 'table'; then thenTemplate;"></ng-container>
-  <ng-template #thenTemplate>
-    <table>
-      <tr *ngFor="let row of component.rows; let i=index">
-        <td *ngFor="let item of row.data">{{item.text}}</td>
-      </tr>
-    </table>
-  </ng-template>
-</div>
+<mat-list>
+  <mat-list-item *ngFor="let item of report.template">{{ item.name }}</mat-list-item>
+</mat-list>
 
 <button mat-raised-button (click)="addNewSection('new Section');">Add Component</button>
+
+<!-- Start of Report -->
+<div *ngFor="let component of report.template">
+
+  <!-- cType TABLE -->
+  <ng-container *ngIf="component.cType === 'table'; then sectionTemplate;"></ng-container>
+  <ng-template #sectionTemplate>
+
+    <table>
+
+      <tr *ngFor="let row of component.rows; let i=index">
+
+        <!-- cType LABEL INSIDE TABLE -->
+        <ng-container *ngIf="row.cType === label; then labelInsideTableTemplate"></ng-container>
+        <ng-template #labelInsideTableTemplate>
+
+          <td *ngFor="let item of row.data">{{item.value}}</td>
+
+        </ng-template>
+
+        <!-- cType DIVIDER INSIDE TABLE -->
+        <ng-container *ngIf="row.cType === 'divider'; then dividerInsideTableTemplate"></ng-container>
+        <ng-template #dividerInsideTableTemplate>
+
+          <mat-divider>
+          </mat-divider>
+
+        </ng-template>
+        
+        
+
+      </tr>
+
+    </table>
+  </ng-template>
+
+  <!-- cType DIVIDER -->
+  <ng-container *ngIf="component.cType === 'divider'; then thenTemplate"></ng-container>
+  <ng-template #thenTemplate>
+
+    <mat-divider style="margin-top: 20px; margin-bottom: 20px;">
+    </mat-divider>
+
+  </ng-template>
+
+</div>
