@@ -7,7 +7,9 @@ import { ReaperSection, ReaperRow, ReaperLabel, IReport, ReaperDivider } from '.
   styleUrls: ['./create-report.component.css']
 })
 export class CreateReportComponent implements OnInit {
-
+  selectedComponent:String;
+  createAbleComponents:String[] = ["section", "divider"];
+  testp:String = "Nothing";
   report: IReport = {
     name: "Name of Report",
     template: [
