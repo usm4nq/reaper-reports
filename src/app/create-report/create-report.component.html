@@ -1,4 +1,4 @@
-<h1>{{report.name}}</h1>
+<p>aaa{{ reportChildComponent.report.name }}</p>
 
 <!-- list of created components -->
 <label id="s-radio-group-label">Pick your favorite season</label>
@@ -11,7 +11,6 @@
   </mat-radio-button>
 </mat-radio-group>
 <div>Selected Component: {{selectedComponent}}</div>
-
 
 <!-- Input Form for  -->
   <mat-form-field class="full-width">
@@ -30,47 +29,4 @@
 <button mat-raised-button (click)="addNewSection('new Section');">Add Component</button>
 
 <!-- Start of Report -->
-<div *ngFor="let component of report.template">
-
-  <!-- cType TABLE -->
-  <ng-container *ngIf="component.cType === 'table'; then sectionTemplate;"></ng-container>
-  <ng-template #sectionTemplate>
-
-    <table>
-
-      <tr *ngFor="let row of component.rows; let i=index">
-
-        <!-- cType LABEL INSIDE TABLE -->
-        <ng-container *ngIf="row.cType === label; then labelInsideTableTemplate"></ng-container>
-        <ng-template #labelInsideTableTemplate>
-
-          <td *ngFor="let item of row.data">{{item.value}}</td>
-
-        </ng-template>
-
-        <!-- cType DIVIDER INSIDE TABLE -->
-        <ng-container *ngIf="row.cType === 'divider'; then dividerInsideTableTemplate"></ng-container>
-        <ng-template #dividerInsideTableTemplate>
-
-          <mat-divider>
-          </mat-divider>
-
-        </ng-template>
-        
-        
-
-      </tr>
-
-    </table>
-  </ng-template>
-
-  <!-- cType DIVIDER -->
-  <ng-container *ngIf="component.cType === 'divider'; then thenTemplate"></ng-container>
-  <ng-template #thenTemplate>
-
-    <mat-divider style="margin-top: 20px; margin-bottom: 20px;">
-    </mat-divider>
-
-  </ng-template>
-
-</div>
+<app-report></app-report>

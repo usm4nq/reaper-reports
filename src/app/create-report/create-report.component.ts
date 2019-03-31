@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ReaperSection, ReaperRow, ReaperLabel, IReport, ReaperDivider } from '../../Reaper/core';
+
+import { ReportComponent } from '../report/report.component'
 
 @Component({
   selector: 'app-create-report',
@@ -7,81 +9,26 @@ import { ReaperSection, ReaperRow, ReaperLabel, IReport, ReaperDivider } from '.
   styleUrls: ['./create-report.component.css']
 })
 export class CreateReportComponent implements OnInit {
+
+  @ViewChild(ReportComponent) reportChildComponent;
+
+  report: IReport;
+
   selectedComponent:String;
   createAbleComponents:String[] = ["section", "divider"];
   testp:String = "Nothing";
-  report: IReport = {
-    name: "Name of Report",
-    template: [
-    new ReaperSection([
-      new ReaperRow(
-        [
-          new ReaperLabel("Name :"),
-          new ReaperLabel("Noman")
-        ]
-      ),
-      new ReaperDivider(),
-      new ReaperRow(
-        [
-          new ReaperLabel("Age :"),
-          new ReaperLabel(13)
-        ]
-      )
-    ], "Header"),
-    new ReaperDivider(),
-    new ReaperSection(
-      [
-        new ReaperRow(
-          [
-            new ReaperLabel(""),
-            new ReaperLabel("Paper"),
-            new ReaperLabel("Marks")
-          ]
-        ),
-        new ReaperRow(
-          [
-            new ReaperLabel(1),
-            new ReaperLabel("Maths"),
-            new ReaperLabel(100)
-          ]
-        ),
-        new ReaperRow(
-          [
-            new ReaperLabel(2),
-            new ReaperLabel("Physics"),
-            new ReaperLabel(97)
-          ]
-        )
-      ],
-      "Body"
-    )
-  ]};
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  ngAfterViewInit(): void {
+    this.report = this.reportChildComponent.report;
+  }
+
   addNewSection(name: String) {
-    this.report.template.push(
-      new ReaperSection([
-        new ReaperRow(
-          [
-            new ReaperLabel("Name :"),
-            new ReaperLabel("Noman")
-          ]
-        ),
-        new ReaperDivider(),
-        new ReaperRow(
-          [
-            new ReaperLabel("Age :"),
-            new ReaperLabel(13)
-          ]
-        )
-      ],
-      name
-      )
-    )
+     
   }
 
 }

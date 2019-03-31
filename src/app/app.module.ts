@@ -10,14 +10,17 @@ import { MatInputModule, MatTableModule, MatCardModule, MatGridListModule, MatBu
   MatSelectModule, MatFormFieldModule, MatDividerModule, MatListModule, MatRadioModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { CreateReportComponent } from './create-report/create-report.component';
+import { ReportComponent } from './report/report.component';
+import { CreatorLabComponent } from './creator-lab/creator-lab.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'Reports', component: ReportsComponent },
   { path: 'Create-New-Report', component: CreateReportComponent},
+  { path: 'creator-lab', component: CreatorLabComponent},
   {
     path: '',
-    redirectTo: '/Create-New-Report',
+    redirectTo: '/creator-lab',
     pathMatch: 'full'
   },
   { path: '**', component: HomeComponent }//page not found
@@ -29,6 +32,8 @@ const appRoutes: Routes = [
     HomeComponent,
     ReportsComponent,
     CreateReportComponent,
+    ReportComponent,
+    CreatorLabComponent,
   ],
   imports: [
     RouterModule.forRoot(
