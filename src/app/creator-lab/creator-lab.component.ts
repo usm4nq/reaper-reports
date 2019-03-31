@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { ReportComponent } from '../report/report.component';
 import { IReport, ReaperSection, ReaperRow, ReaperLabel } from '../../Reaper/core'
 
@@ -16,10 +16,17 @@ export class CreatorLabComponent implements OnInit {
   createAbleComponents:String[] = ["section", "divider"];
   testp:String = "Nothing";
 
+  windowHeight;
+
   constructor() { }
 
   ngOnInit() {
+    this.windowHeight = window.innerHeight;
+  }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event){
+    this.windowHeight = window.innerHeight;
   }
 
   ngAfterViewInit(): void {

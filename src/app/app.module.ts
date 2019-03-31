@@ -9,14 +9,12 @@ import { ReportsComponent } from './reports/reports.component';
 import { MatInputModule, MatTableModule, MatCardModule, MatGridListModule, MatButtonModule,
   MatSelectModule, MatFormFieldModule, MatDividerModule, MatListModule, MatRadioModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
-import { CreateReportComponent } from './create-report/create-report.component';
 import { ReportComponent } from './report/report.component';
 import { CreatorLabComponent } from './creator-lab/creator-lab.component';
 
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'Reports', component: ReportsComponent },
-  { path: 'Create-New-Report', component: CreateReportComponent},
   { path: 'creator-lab', component: CreatorLabComponent},
   {
     path: '',
@@ -31,7 +29,6 @@ const appRoutes: Routes = [
     AppComponent,
     HomeComponent,
     ReportsComponent,
-    CreateReportComponent,
     ReportComponent,
     CreatorLabComponent,
   ],
